@@ -289,7 +289,7 @@ const TEAMS = [
   {
     cat: "coach",
     statut: "Bénévole / Coach",
-    name: "??",
+    name: "Maxence",
     team: "U9 M",
     img: "/public/img/Coach/u9m.webp",
   },
@@ -319,6 +319,78 @@ const TEAMS = [
     coach: "Secrétaire du club",
     name: "Clothilde Thibaud",
     img: "/public/img/Bureau/clothilde.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Aurélien",
+    img: "/public/img/Bureau/aurelien.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Laurent",
+    img: "/public/img/Bureau/laurent.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Ludovic Penvern Thibaud",
+    img: "/public/img/Bureau/ludovic.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Philippe Thibaud",
+    img: "/public/img/Bureau/philippe.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Régis Garnier",
+    img: "/public/img/Bureau/regis.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Sophie",
+    img: "/public/img/Bureau/sophie.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Emeline ",
+    img: "/public/img/Bureau/emeline.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Pamela Kappler ",
+    img: "/public/img/Bureau/pamela.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Claude Houis ",
+    img: "/public/img/Bureau/claude.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "Antonin Barthuel ",
+    img: "/public/img/Bureau/antonin.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "",
+    img: "/public/img/Bureau/flavie.webp",
+  },
+  {
+    cat: "bureau",
+    coach: "??",
+    name: "",
+    img: "/public/img/Bureau/clodie.webp",
   },
 ];
 
