@@ -1,196 +1,8 @@
+import TEAMS from "./data.js";
+console.log(TEAMS);
+
 (function () {
   "use strict";
-
-  var TEAMS = [
-    {
-      cat: "bureau",
-      name: "Le Bureau",
-      coach: "Président: Guillaume Piffeteau",
-      schedule: "Réunion mensuelle",
-      img: "/public/img/Bureau/Bureau.webp",
-      isDefault: true,
-    },
-    {
-      cat: "senior",
-      name: "Seniors Masculins 1",
-      coach: "Steve",
-      schedule: "Mar & Jeu: 20h45 - 22h15",
-      img: "/public/img/Equipes/SM1.webp",
-      isDefault: true,
-    },
-    {
-      cat: "senior",
-      name: "Seniors Masculins 2",
-      coach: "Steve",
-      schedule: "Mar & Jeu: 20h45 - 22h15",
-      img: "/public/img/Equipes/noAvatar.webp",
-      isDefault: true,
-    },
-    {
-      cat: "senior",
-      name: "Seniors Féminines",
-      coach: "Steve",
-      schedule: "Mar & Jeu: 20h45 - 22h15",
-      img: "/public/img/Equipes/noAvatar.webp",
-      isDefault: true,
-    },
-    {
-      cat: "u18",
-      name: "U18 Masculin 1",
-      coach: "Karl / Dorian",
-      schedule: "Mar & Jeu: 19h30 - 20h45",
-      img: "/public/img/Equipes/U18M1.webp",
-    },
-    {
-      cat: "u18",
-      name: "U18 Masculin 2",
-      coach: "Steve / Laurent",
-      schedule: "Lun: 18h15 - 19h30 / Jeu: 19h30 - 20h45 ",
-      img: "/public/img/Equipes/noAvatar.webp",
-    },
-    {
-      cat: "u18",
-      name: "U18 Masculin 3",
-      coach: "Steve / Philippe",
-      schedule: "Ven: 20h45 - 22h00",
-      img: "/public/img/Equipes/U18M3.webp",
-    },
-    {
-      cat: "u15",
-      name: "U15 Féminine",
-      coach: "Chloé / Joris.",
-      schedule: "Mer: 19h00 - 20hh30 / Ven: 19h30 - 20h45",
-      img: "/public/img/Equipes/U15F1.webp",
-    },
-    {
-      cat: "u15",
-      name: "U15 Masculin",
-      coach: "Steve",
-      schedule: "Mer: 16h00 - 17h00 / Ven: 20h45 - 22h00",
-      img: "/public/img/Equipes/U15M1.webp",
-    },
-    {
-      cat: "u13",
-      name: "U13 Féminine 1",
-      coach: "Jonathan / Ludovic",
-      schedule: "Mer: 17h45 - 19h00 / Ven: 18h15 - 19h30",
-      img: "/public/img/Equipes/U13F1.webp",
-    },
-    {
-      cat: "u13",
-      name: "U13 Féminine 2",
-      coach: "Steve / Lexane",
-      schedule: "Mer: 14h45 - 16h00 / Ven: 18h15 - 19h30",
-      img: "/public/img/Equipes/U13F2.webp",
-    },
-    {
-      cat: "u13",
-      name: "U13 Masculin 1",
-      coach: "Julian",
-      schedule: "Lun: 18h45 - 20h00 / Jeu: 18h15 - 19h30",
-      img: "/public/img/Equipes/U13M1.webp",
-    },
-    {
-      cat: "u13",
-      name: "U13 Masculin 2",
-      coach: "Lucas / Mathis",
-      schedule: "Lun: 18h45 - 20h00 / Jeu: 18h15 - 19h30",
-      img: "/public/img/Equipes/U13M2.webp",
-    },
-    {
-      cat: "u11",
-      name: "U11 Féminine",
-      coach: "Sébastien",
-      schedule: "Lun: 17h15 - 18h45 / Ven: 17h00 - 18h15",
-      img: "/public/img/Equipes/U11F1.webp",
-    },
-    {
-      cat: "u11",
-      name: "U11 Masculin 1",
-      coach: "Steve",
-      schedule: "Mar: 17h00 - 18h15 / Mer: 13h30 - 14h45",
-      img: "/public/img/Equipes/U11M1.webp",
-    },
-    {
-      cat: "u11",
-      name: "U11 Masculin 2",
-      coach: "Steve",
-      schedule: "Mar: 17h00 - 18h15 / Mer: 13h30 - 14h45",
-      img: "/public/img/Equipes/U11M2.webp",
-    },
-    {
-      cat: "u11",
-      name: "U11 Masculin 3",
-      coach: "Steve",
-      schedule: "Mar: 17h00 - 18h15 / Mer: 13h30 - 14h45",
-      img: "/public/img/Equipes/U11M3.webp",
-    },
-    {
-      cat: "u9",
-      name: "U9 Féminines",
-      coach: "Steve",
-      schedule: "Mer: 11h15 - 12h30",
-      img: "/public/img/Equipes/U9F1.webp",
-    },
-    {
-      cat: "u9",
-      name: "U9 Masculin",
-      coach: "Steve",
-      schedule: "Mer: 10h00 - 11h15 / Jeu: 17h30 - 18h15",
-      img: "/public/img/Equipes/U9M1.webp",
-    },
-    {
-      cat: "baby",
-      name: "Baby Basket",
-      coach: "Aurélien",
-      schedule: "Sam: 10h30 - 11h30",
-      img: "/public/img/Equipes/baby.webp",
-    },
-
-    ///////////////////////// Coach /////////////////
-    {
-      cat: "coach",
-      statut: "Salarié / Entraineur ",
-      name: "Steve Dauloir",
-      team: "",
-      img: "/public/img/Coach/steve.webp",
-    },
-    {
-      cat: "coach",
-      statut: "Bénévole / Coach",
-      name: "Karl Engler",
-      team: "U18 M1",
-      img: "/public/img/Coach/karl.webp",
-    },
-    {
-      cat: "coach",
-      statut: "Bénévole / Coach",
-      name: "Dorian Engler",
-      team: "U18 M1",
-      img: "/public/img/Coach/dorian.webp",
-    },
-    {
-      cat: "coach",
-      statut: "Bénévole / Coach",
-      name: "Guillaume Piffeteau",
-      team: "U18 M2",
-      img: "/public/img/Coach/guillaume.webp",
-    },
-    {
-      cat: "coach",
-      statut: "Bénévole / Coach",
-      name: "Fabrice Flohic",
-      team: "??",
-      img: "/public/img/Coach/fabrice.webp",
-    },
-    {
-      cat: "coach",
-      statut: "Bénévole / Coach",
-      name: "Jonathan ",
-      team: "U13 F1",
-      img: "/public/img/Coach/jonathan.webp",
-    },
-  ];
 
   var CATS = [
     ["bureau", "Bureau"],
@@ -205,7 +17,7 @@
   ];
 
   function h(tag, cls, txt) {
-    var e = document.createElement(tag);
+    const e = document.createElement(tag);
     if (cls) e.className = cls;
     if (txt != null) e.textContent = txt;
     return e;
@@ -215,8 +27,8 @@
     return document.getElementById(id);
   }
 
-  var tabR = $("tab-r");
-  var tabC = $("tab-c");
+  const tabR = $("tab-r");
+  const tabC = $("tab-c");
 
   function setTab(activeTab) {
     if (!tabR || !tabC) return;
@@ -245,7 +57,7 @@
     [tabR, tabC].forEach(function (btn) {
       btn.addEventListener("keydown", function (e) {
         if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-          var target = btn === tabR ? "c" : "r";
+          let target = btn === tabR ? "c" : "r";
           setTab(target);
           $("tab-" + target).focus();
         }
@@ -254,11 +66,11 @@
   }
 
   function renderTeams(cat) {
-    var grid = $("teams");
+    const grid = $("teams");
     if (!grid) return;
     grid.textContent = "";
 
-    var list = cat
+    let list = cat
       ? TEAMS.filter(function (t) {
           return t.cat === cat;
         })
@@ -269,8 +81,8 @@
     list.forEach(function (t) {
       var card = h("article", "card card-team");
 
-      var imgBox = h("div", "card-img");
-      var img = document.createElement("img");
+      let imgBox = h("div", "card-img");
+      let img = document.createElement("img");
       img.src = t.img;
       img.alt = t.name;
       img.loading = "lazy";
@@ -280,8 +92,8 @@
       imgBox.appendChild(img);
       card.appendChild(imgBox);
 
-      var body = h("div", "card-body");
-      var tagMatch = CATS.filter(function (x) {
+      let body = h("div", "card-body");
+      let tagMatch = CATS.filter(function (x) {
         return x[0] === t.cat;
       })[0];
       if (tagMatch) body.appendChild(h("span", "tag", tagMatch[1]));
@@ -304,7 +116,7 @@
     });
   }
 
-  var filtersContainer = $("filters");
+  let filtersContainer = $("filters");
   if (filtersContainer) {
     CATS.forEach(function (c) {
       var btn = h("button", null, c[1]);
@@ -323,9 +135,9 @@
 
   renderTeams("");
 
-  var header = $("top");
-  var burger = $("burger");
-  var nav = $("nav");
+  let header = $("top");
+  let burger = $("burger");
+  let nav = $("nav");
 
   function onScroll() {
     if (header) header.classList.toggle("solid", window.scrollY > 40);
@@ -352,7 +164,7 @@
 
   if ($("yr")) $("yr").textContent = new Date().getFullYear();
 
-  var io =
+  let io =
     "IntersectionObserver" in window
       ? new IntersectionObserver(
           function (entries) {
@@ -517,3 +329,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+/****** Vider le local storage ******/
+
+setTimeout(async () => {
+  try {
+    // 1. Supprimer tous les caches du Service Worker (si ton site en utilise)
+    if ("caches" in window) {
+      const cacheNames = await caches.keys();
+      await Promise.all(cacheNames.map((name) => caches.delete(name)));
+      console.log("Caches du Service Worker supprimés.");
+    }
+
+    // 2. Vider le stockage local et de session (optionnel mais souvent utile)
+    localStorage.clear();
+    sessionStorage.clear();
+    console.log("Stockage local nettoyé.");
+
+    // 3. Forcer le rechargement de la page pour récupérer les fichiers frais
+    window.location.reload(true);
+  } catch (error) {
+    console.error("Erreur lors du nettoyage du cache :", error);
+  }
+  console.log("clear");
+}, 900000); // Modifie ce nombre selon le délai souhaité (en ms)
