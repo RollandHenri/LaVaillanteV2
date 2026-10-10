@@ -7,7 +7,7 @@
       name: "Le Bureau",
       coach: "Président: Guillaume Piffeteau",
       schedule: "Réunion mensuelle",
-      img: "/public/img/Equipes/Bureau.webp",
+      img: "/public/img/Bureau/Bureau.webp",
       isDefault: true,
     },
     {
@@ -146,10 +146,55 @@
       schedule: "Sam: 10h30 - 11h30",
       img: "/public/img/Equipes/baby.webp",
     },
+
+    ///////////////////////// Coach /////////////////
+    {
+      cat: "coach",
+      statut: "Salarié / Entraineur ",
+      name: "Steve Dauloir",
+      team: "",
+      img: "/public/img/Coach/steve.webp",
+    },
+    {
+      cat: "coach",
+      statut: "Bénévole / Coach",
+      name: "Karl Engler",
+      team: "U18 M1",
+      img: "/public/img/Coach/karl.webp",
+    },
+    {
+      cat: "coach",
+      statut: "Bénévole / Coach",
+      name: "Dorian Engler",
+      team: "U18 M1",
+      img: "/public/img/Coach/dorian.webp",
+    },
+    {
+      cat: "coach",
+      statut: "Bénévole / Coach",
+      name: "Guillaume Piffeteau",
+      team: "U18 M2",
+      img: "/public/img/Coach/guillaume.webp",
+    },
+    {
+      cat: "coach",
+      statut: "Bénévole / Coach",
+      name: "Fabrice Flohic",
+      team: "??",
+      img: "/public/img/Coach/fabrice.webp",
+    },
+    {
+      cat: "coach",
+      statut: "Bénévole / Coach",
+      name: "Jonathan ",
+      team: "U13 F1",
+      img: "/public/img/Coach/jonathan.webp",
+    },
   ];
 
   var CATS = [
     ["bureau", "Bureau"],
+    ["coach", "Coach"],
     ["senior", "Seniors"],
     ["u18", "U18"],
     ["u15", "U15"],
@@ -246,6 +291,9 @@
       if (t.cat === "bureau") {
         body.appendChild(h("p", null, t.coach));
         body.appendChild(h("p", null, t.schedule));
+      } else if (t.cat === "coach") {
+        body.appendChild(h("p", null, "Statut : " + t.statut));
+        body.appendChild(h("p", null, "Equipe : " + t.team));
       } else {
         body.appendChild(h("p", null, "Coach : " + t.coach));
         body.appendChild(h("p", null, "Entrainement : " + t.schedule));
