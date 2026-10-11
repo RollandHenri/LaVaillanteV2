@@ -13,7 +13,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230b3d91'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23fff' stroke-width='5'/%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="stylev2.css" />
     <script>
       try {
         if (sessionStorage.getItem("vi-intro")) {
@@ -199,6 +199,7 @@
               <li><a href="#resultats">Résultats</a></li>
               <li><a href="#actualites">Actualités</a></li>
               <li><a href="#equipes">Équipes</a></li>
+              <li><a href="/pages/videos.html">Vidéos</a></li>
               <li><a href="#boutique">Boutique</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -276,12 +277,45 @@
               Classement
             </button>
           </div>
-          <div
-            id="api-container"
-            class="api-block rv"
-            role="tabpanel"
-            tabindex="0"
-          ></div>
+        </div>
+
+        <div class="fetch">
+          <div class="fetch-match">
+            <iframe
+              title="match"
+              src="https://widgets.scorenco.com/week-events/194467"
+              style="
+                height: 700px;
+                width: 100%;
+                border: 0;
+                border-width: 0;
+                border-radius: 25px;
+              "
+              frameborder="0"
+              height="500"
+              width="100%"
+              referrerpolicy="unsafe-url"
+              >Vaillante Immaculee St Nazaire</iframe
+            >
+          </div>
+          <div class="fetch-classement">
+            <iframe
+              title="classement"
+              src="https://widgets.scorenco.com/ranking/95000"
+              style="
+                height: 700px;
+                width: 100%;
+                border: 0;
+                border-width: 0;
+                border-radius: 25px;
+              "
+              frameborder="0"
+              height="500"
+              width="100%"
+              referrerpolicy="unsafe-url"
+              >Vaillante Immaculee St Nazaire</iframe
+            >
+          </div>
         </div>
       </section>
 
@@ -432,6 +466,116 @@
         </div>
       </section>
 
+      <section class="s" id="videos" aria-labelledby="h-shop">
+        <div class="wrap" style="text-align: center">
+          <h2 id="h-shop" class="rv">Vidéos Tuto</h2>
+          <p class="sub rv" style="margin-inline: auto">
+            Prenez connaissance d'une série de vidéo pour joueurs, coachs et
+            encadrants pour mieux comprendre le basket
+          </p>
+          <div
+            class="vc rv"
+            data-video-carousel
+            role="region"
+            aria-label="Aperçu des vidéos tuto"
+          >
+            <div class="vc-viewport">
+              <div class="vc-track">
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #ff8787; --c2: #c92a2a"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">Le dribble</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #ffa94d; --c2: #d9480f"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">Les passes</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #fcc419; --c2: #e67700"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">Le lay-up</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #8ce99a; --c2: #2b8a3e"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">Le tir en suspension</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #38d9a9; --c2: #087f5b"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">La défense 1 contre 1</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #3bc9db; --c2: #0b7285"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">Le rebond</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #4dabf7; --c2: #1864ab"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">L'échauffement</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #748ffc; --c2: #364fc7"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">Arbitrage et règles</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #b197fc; --c2: #6741d9"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">La table de marque</span>
+                </a>
+                <a
+                  class="vc-card"
+                  href="./pages/videos.html"
+                  style="--c1: #f783ac; --c2: #a61e4d"
+                >
+                  <span class="vc-play" aria-hidden="true"></span>
+                  <span class="vc-title">Les étirements</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="rv">
+            <a
+              href="./pages/videos.html"
+              rel="noopener noreferrer"
+              class="btn-anim"
+            >
+              Accéder à la bibliotèque de Vidéos
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section class="s" id="boutique" aria-labelledby="h-shop">
         <div class="wrap" style="text-align: center">
           <h2 id="h-shop" class="rv">Boutique Officielle</h2>
@@ -542,6 +686,6 @@
       </div>
     </footer>
 
-    <script src="script.js" type="module"></script>
+    <script src="scriptv2.js" type="module"></script>
   </body>
 </html>

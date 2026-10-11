@@ -335,7 +335,7 @@ const TEAMS = [
   {
     cat: "bureau",
     coach: "??",
-    name: "Ludovic Penvern Thibaud",
+    name: "Ludovic Penvern",
     img: "/public/img/Bureau/ludovic.webp",
   },
   {

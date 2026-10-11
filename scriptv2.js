@@ -1,5 +1,4 @@
 import TEAMS from "./data.js";
-console.log(TEAMS);
 
 (function () {
   "use strict";
@@ -26,45 +25,25 @@ console.log(TEAMS);
   function $(id) {
     return document.getElementById(id);
   }
+  /****** Fetch section  *******/
+  /*** Boutton ***/
+  const btnMatch = document.getElementById("tab-r");
+  const btnClass = document.getElementById("tab-c");
+  /*** Div classement et match ***/
+  const match = document.querySelector(".fetch-match");
+  const classement = document.querySelector(".fetch-classement");
 
-  const tabR = $("tab-r");
-  const tabC = $("tab-c");
+  /*** Envent ****/
+  btnClass.addEventListener("click", () => {
+    classement.classList.add("fetch-active");
+    match.classList.add("fetch-hidden");
+  });
+  btnMatch.addEventListener("click", () => {
+    classement.classList.remove("fetch-active");
+    match.classList.remove("fetch-hidden");
+  });
 
-  function setTab(activeTab) {
-    if (!tabR || !tabC) return;
-    tabR.setAttribute("aria-selected", activeTab === "r");
-    tabC.setAttribute("aria-selected", activeTab === "c");
-    tabR.tabIndex = activeTab === "r" ? 0 : -1;
-    tabC.tabIndex = activeTab === "c" ? 0 : -1;
-
-    //////////////////// TextContent Score'n'Co /////////////////////
-    // var apiContainer = $("api-container");
-    // if (apiContainer) {
-    //   apiContainer.innerHTML =
-    //     '<p class="empty">Emplacement prêt pour les données (' +
-    //     (activeTab === "r" ? "Résultats" : "Classements") +
-    //     ").</p>";
-    // }
-  }
-
-  if (tabR && tabC) {
-    tabR.onclick = function () {
-      setTab("r");
-    };
-    tabC.onclick = function () {
-      setTab("c");
-    };
-    [tabR, tabC].forEach(function (btn) {
-      btn.addEventListener("keydown", function (e) {
-        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-          let target = btn === tabR ? "c" : "r";
-          setTab(target);
-          $("tab-" + target).focus();
-        }
-      });
-    });
-  }
-
+  /****** fin fetch section  *******/
   function renderTeams(cat) {
     const grid = $("teams");
     if (!grid) return;
@@ -250,7 +229,7 @@ console.log(TEAMS);
 
 document.addEventListener("DOMContentLoaded", () => {
   // Sélection des éléments
-  // Note : je cible .card-actu. Si rv et in sont des classes d'animation ajoutées plus tard,
+  // Note : cible .card-actu. Si rv et in sont des classes d'animation ajoutées plus tard,
   // il vaut mieux cibler uniquement .card-actu pour être sûr que le clic fonctionne tout le temps.
   const cards = document.querySelectorAll(".card-actu");
   const modal = document.getElementById("popup-actu");
@@ -261,7 +240,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const link =
     "https://app.grinta.eu/vaillante-immaculee-basketball/adult/official";
   const closeBtn = document.querySelector(".close-btn");
-  console.log(popupTitle);
 
   // Fonction pour fermer la popup
   const closeModal = () => {
@@ -277,7 +255,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Ouvrir la popup au clic sur une carte
   cards.forEach((card) => {
     if (card.id !== "no-open") {
-      console.log("test cool");
       card.addEventListener("click", () => {
         // Récupérer l'image de la carte cliquée
         const img = card.querySelector("img");
@@ -329,6 +306,86 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+/****** Carrousel vidéo  ******/
+(() => {
+  const root = document.querySelector("[data-video-carousel]");
+  if (!root) return;
+
+  const track = root.querySelector(".vc-track");
+  const originals = Array.from(track.children);
+  const SPEED = 40; // pixels par seconde
+
+  // Mouvement réduit : on désactive l'animation, la liste reste scrollable
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (reduceMotion.matches) {
+    root.classList.add("is-static");
+    return;
+  }
+
+  let setWidth = 0; // largeur d'une série complète de vignettes
+  let offset = 0; // décalage courant en px
+  let speed = SPEED; // vitesse courante (lissée)
+  let paused = false;
+  let last = 0;
+
+  // Clone la série d'origine autant de fois que nécessaire pour remplir l'écran
+  function build() {
+    track.querySelectorAll("[data-clone]").forEach((el) => el.remove());
+
+    setWidth = originals.reduce((sum, card) => {
+      const style = getComputedStyle(card);
+      return sum + card.offsetWidth + parseFloat(style.marginRight);
+    }, 0);
+
+    const copies = Math.ceil(root.offsetWidth / setWidth) + 1;
+    for (let i = 0; i < copies; i++) {
+      originals.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute("data-clone", "");
+        clone.setAttribute("aria-hidden", "true");
+        clone.tabIndex = -1; // les doublons ne doivent pas être focusables
+        track.appendChild(clone);
+      });
+    }
+    offset = offset % setWidth;
+  }
+
+  function frame(now) {
+    const dt = Math.min((now - last) / 1000, 0.05); // évite les sauts après un onglet inactif
+    last = now;
+
+    // Ralentit / reprend en douceur au lieu de s'arrêter net
+    const target = paused ? 0 : SPEED;
+    speed += (target - speed) * Math.min(dt * 8, 1);
+
+    offset += speed * dt;
+    if (offset >= setWidth) offset -= setWidth;
+    track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+
+    requestAnimationFrame(frame);
+  }
+
+  // Pause au survol et au focus clavier
+  root.addEventListener("pointerenter", () => (paused = true));
+  root.addEventListener("pointerleave", () => (paused = false));
+  root.addEventListener("focusin", () => (paused = true));
+  root.addEventListener("focusout", () => (paused = false));
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(build, 150);
+  });
+
+  build();
+  requestAnimationFrame((t) => {
+    last = t;
+    frame(t);
+  });
+})();
+
+/******  fin *******/
 
 /****** Vider le local storage ******/
 

@@ -602,13 +602,55 @@ section.s.dark {
   border-color: #fff;
 }
 
-.api-block {
-  min-height: 120px;
-  background: var(--card);
-  border: 1px dashed var(--line);
-  border-radius: var(--r);
-  padding: 24px;
+/********** Fetch score *******/
+
+#resultats {
+  padding-bottom: 0px;
 }
+
+.fetch {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 700px;
+  margin: 40px auto;
+}
+
+.fetch .fetch-match {
+  height: auto;
+  width: 100%;
+  border-radius: 25px;
+  transition: 0.4s ease;
+  z-index: 2;
+}
+
+.fetch .fetch-classement {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  height: auto;
+  width: 100%;
+  margin: auto 0;
+  border-radius: 25px;
+  transition: 0.4s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.fetch-active {
+  left: 0 !important;
+  opacity: 1 !important;
+  z-index: 3 !important;
+}
+
+.fetch-hidden {
+  opacity: 0 !important;
+  z-index: 0 !important;
+}
+
+/*********** Fin css fetch ********/
 
 .grid {
   display: grid;
@@ -856,6 +898,141 @@ section.s.dark {
   font-size: 0.9rem;
 }
 
+/* ==========================================================
+   Carrousel Vidéos Tuto — La Vaillante Immaculée
+   ========================================================== */
+
+.vc {
+  --vc-card-w: 260px;
+  --vc-gap: 20px;
+  --vc-radius: 14px;
+  position: relative;
+  margin-block: 2.5rem 2rem;
+  /* fondu sur les bords gauche / droite */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+/* Le padding vertical laisse la place au scale(1.1) sans être rogné */
+.vc-viewport {
+  overflow: hidden;
+  padding-block: 1.5rem;
+}
+
+.vc-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* ---------- Vignette ---------- */
+.vc-card {
+  position: relative;
+  flex: 0 0 var(--vc-card-w);
+  width: 40px;
+  height: 200px;
+  margin-right: var(--vc-gap); /* margin (et pas gap) : boucle sans à-coup */
+  aspect-ratio: 16 / 9;
+  border-radius: var(--vc-radius);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.9rem 1rem;
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: 0 6px 16px rgba(6, 26, 69, 0.18);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.vc-card:hover,
+.vc-card:focus-visible {
+  transform: scale(1.1);
+  z-index: 2;
+  box-shadow: 0 14px 28px rgba(6, 26, 69, 0.3);
+}
+
+.vc-card:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -6px;
+}
+
+/* Dégradé sombre en bas pour garder le texte lisible sur toutes les couleurs */
+.vc-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 60%);
+  pointer-events: none;
+}
+
+.vc-title {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+/* Bouton lecture */
+.vc-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  margin: -34px 0 0 -26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  display: grid;
+  place-items: center;
+}
+
+.vc-play::before {
+  content: "";
+  width: 18px;
+  height: 20px;
+  margin-left: 4px;
+  background: var(--c2);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+/* ---------- Mouvement réduit : pas d'animation, défilement manuel ---------- */
+.vc.is-static .vc-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.vc.is-static .vc-card {
+  scroll-snap-align: start;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .vc {
+    --vc-card-w: 210px;
+    --vc-gap: 14px;
+  }
+}
+
+/*----------------- Fin -----------*/
+
 .contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -987,5 +1164,217 @@ footer {
   .rv {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ---------- Page vidéos ---------- */
+nav a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+section.page-head {
+  padding-top: calc(68px + clamp(48px, 8vw, 96px));
+}
+
+.page-head h1 {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.vin {
+  animation: vpop 0.6s var(--ease) both;
+}
+
+.vmeta {
+  color: var(--mut);
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+}
+
+.grid-video {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.card-video {
+  display: flex;
+  flex-direction: column;
+  animation: vpop 0.45s var(--ease) both;
+}
+
+.card-video .card-img {
+  cursor: pointer;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--b2), var(--b3));
+}
+
+.vbtn {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.vbtn:disabled {
+  cursor: default;
+}
+
+.vbtn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s var(--ease);
+}
+
+.card-video:hover .vbtn:not(:disabled) img {
+  transform: scale(1.06);
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s var(--ease);
+}
+
+.play::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -11px 0 0 -7px;
+  border-left: 20px solid #061a45;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+}
+
+.card-video:hover .vbtn:not(:disabled) .play {
+  transform: scale(1.12);
+}
+
+.vbtn:disabled .play {
+  opacity: 0.35;
+}
+
+.soon {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: rgba(3, 9, 31, 0.8);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 2px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.card-video .card-body {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-video .tag {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid var(--line);
+  padding: 2px 10px;
+  border-radius: 99px;
+}
+
+.card-video h3 {
+  font-size: 1.1rem;
+}
+
+.card-video .date {
+  color: var(--mut);
+  font-size: 0.85rem;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 28px;
+  text-align: center;
+  color: var(--mut);
+}
+
+dialog#player {
+  margin: auto;
+  width: min(980px, 94vw);
+  padding: 0;
+  overflow: hidden;
+  color: #fff;
+  background: var(--k);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+dialog#player::backdrop {
+  background: rgba(3, 9, 31, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+.phead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  font-weight: 700;
+}
+
+.pclose {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.pclose:hover {
+  background: #fff;
+  color: #061a45;
+}
+
+.pstage {
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.pstage iframe,
+.pstage video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@keyframes vpop {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
   }
 }
