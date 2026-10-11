@@ -614,7 +614,7 @@ section.s.dark {
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 700px;
+  height: auto;
   margin: 40px auto;
 }
 
